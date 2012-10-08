@@ -27,8 +27,12 @@ if(@$_POST['upload']=='Send'){
      if ($error == UPLOAD_ERR_OK) {  
          $tmp_name = $_FILES["pictures"]["tmp_name"][$key];  
          $name    = $_FILES["pictures"]["name"][$key];  
-      $uploadfile = $dest_folder.$name;  
-         move_uploaded_file($tmp_name, $uploadfile);  
+     // $uploadfile = $dest_folder.$name; 
+       //  move_uploaded_file($tmp_name, $uploadfile);  
+
+    $ext=substr($name,strrpos($name,'.')); 
+	  $filename=$dest_folder.date("ymdhms").rand(10000,99999).$ext;
+	    move_uploaded_file($tmp_name,$filename);  
      }  
  }  
 }  

@@ -18,6 +18,7 @@
 </html> 
  
 <?php 
+//var_dump($_FILES);
 if(@$_POST['upload']=='Send'){  
     $dest_folder   =  "picture/";  
  if(!file_exists($dest_folder)){  
@@ -30,9 +31,13 @@ if(@$_POST['upload']=='Send'){
      // $uploadfile = $dest_folder.$name; 
        //  move_uploaded_file($tmp_name, $uploadfile);  
 
-    $ext=substr($name,strrpos($name,'.')); 
+	  $ext=substr($name,strrpos($name,'.')); 
 	  $filename=$dest_folder.date("ymdhms").rand(10000,99999).$ext;
-	    move_uploaded_file($tmp_name,$filename);  
+	   if(!move_uploaded_file($tmp_name,$filename)){
+		   echo $name."上传失败！<br>";
+		   }else{
+			echo $name.",上传成功！更名为：".$filename."<br>";   
+			   }  
      }  
  }  
 }  

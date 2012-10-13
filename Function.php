@@ -5,8 +5,11 @@
 *所有目录不存在自动循环建立。
 *writefile('test','keli/keli/keli.txt')
 */
-function writefile($body,$path){    
+function writefile($body,$path){ 
+if (!file_exists(dirname($path))){     
 createDir(dirname($path));     
+mkdir($path, 0777);     
+}   
 $handle=fopen($path,'w');     
  fwrite($handle,$body);     
  fclose($handle);    

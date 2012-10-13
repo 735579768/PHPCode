@@ -5,22 +5,19 @@
 *所有目录不存在自动循环建立。
 *writefile('test','keli/keli/keli.txt')
 */
-function writefile($body,$path){ 
-if (!file_exists(dirname($path))){     
+function writefile($body,$path){    
 createDir(dirname($path));     
-mkdir($path, 0777);     
-}   
 $handle=fopen($path,'w');     
  fwrite($handle,$body);     
  fclose($handle);    
  return 1;    
-    }    
-function createDir($path){     
+    }  
+ function createDir($path){     
 if (!file_exists($path)){     
 createDir(dirname($path));     
 mkdir($path, 0777);     
 }     
-}    
+}
 /*
 *@param $pathname 要包含的目录,里面可以有多级目录
 */

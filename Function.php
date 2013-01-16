@@ -38,6 +38,10 @@ function incdirfile($pathname,$patten='*'){
         
     }
 }
+//包含目录lib
+$pathname=FRAME_ROOT."\lib";
+$filename=glob($pathname."\\"."*");
+foreach($filename as $fn){if(!is_dir($fn)){include_once $fn;}}
 //incdirfile(dirname(__FILE__));
 //Image::buildImageVerify(4);
 image::buildString("赵克立");
